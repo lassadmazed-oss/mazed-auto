@@ -113,7 +113,9 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
-          version: latest
+          # Pinned: CLI v3 (2026-11-02) refuses [inbucket] in supabase/config.toml
+          # (« Use [local_smtp] instead »). Move to v3 with that rename, together.
+          version: 2.122.1
 
       # Brings up the local stack and APPLIES supabase/migrations/** to a real
       # Supabase Postgres (a bare postgres can't run these migrations).
